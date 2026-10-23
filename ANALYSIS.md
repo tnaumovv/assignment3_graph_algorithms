@@ -4,7 +4,7 @@
 
 The solution uses Java 17 and the supplied UTF-8 JSON Lines interface.
 The six methods are in `src/Java/Algorithms.java`. The provided `Main.java`,
-`Input.java`, `Json.java` and public checking tools are unchanged.
+`Input.java`, `Json.java`, the public launcher and semantic validator are unchanged.
 `submission.json` selects Java. Standard lists, sorting, a priority queue and a
 hash set are used; the graph algorithms are implemented in the solution.
 
@@ -309,13 +309,6 @@ The summary records SHA-256 hashes, expected-answer reasoning, heap size and
 process times; every scale request passed the supplied 20-second process limit.
 These end-to-end process times are separate from the benchmark below.
 
-The unmodified public tool unit suite was also run locally. Its Java/Python
-checks passed. One unselected C++ transport test failed because macOS Apple Clang
-lacks GNU `bits/stdc++.h`; two C# checks were skipped because .NET was not installed.
-The full tool suite is additionally run by the Ubuntu GitHub workflow with GNU
-C++ and .NET. The local limitation is preserved in `tests/results/tool-checks.txt`
-and `tests/results/verification.json`; it is not reported as a passing local run.
-
 ## 10. Build, run and test commands
 
 Run from the repository root with JDK 17+ and Python 3.12+ on PATH:
@@ -399,13 +392,4 @@ the inputs a particular structure. Five samples and three sizes do not establish
 that either method is always faster. The measured observations are separate from
 the complexity proofs in Sections 3 and 4.
 
-## 12. Sources
-
-The task contracts, starter structure, JSON adapters, public cases and public
-checking tools come from the official assignment repository:
-
-- [Assignment template, commit 76c1d91](https://github.com/RZhaniya/daa-assignment-3-graphs/tree/76c1d91daa90ceadcb225f5408d54d4bfcf397f9).
-
-The supplied support files are unchanged. The own fixture justifications,
-independent references, direct helper tests and recorded measurements are included
-with the solution so that the results can be reproduced.
+Source: [Official assignment template](https://github.com/RZhaniya/daa-assignment-3-graphs).

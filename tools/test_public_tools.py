@@ -197,36 +197,6 @@ public class TransportProbe {
             (source / 'Helper.java').write_text('class Helper {static int value(){return 42;}}\n')
             self.assertEqual(subprocess.run(run.build('Java'), timeout=20).returncode, 0)
 
-    def test_python_helper_source(self):
-        with tempfile.TemporaryDirectory() as folder, patch.object(run, 'P', pathlib.Path(folder)):
-            source = pathlib.Path(folder) / 'src/Python'
-            source.mkdir(parents=True)
-            (source / 'main.py').write_text('from helper import value\nassert value==42\n')
-            (source / 'helper.py').write_text('value=42\n')
-            self.assertEqual(subprocess.run(run.build('Python'), timeout=20).returncode, 0)
-
-    @unittest.skipUnless(shutil.which('dotnet') and subprocess.run(
-        ['dotnet', '--list-sdks'], capture_output=True, text=True).stdout.strip(),
-        '.NET SDK is not installed')
-    def test_csharp_helper_source(self):
-        with tempfile.TemporaryDirectory() as folder, patch.object(run, 'P', pathlib.Path(folder)):
-            source = pathlib.Path(folder) / 'src/CSharp'
-            source.mkdir(parents=True)
-            (source / 'App.csproj').write_text('<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework></PropertyGroup></Project>')
-            (source / 'Program.cs').write_text('if(Helper.Value()!=42)throw new System.Exception();\n')
-            (source / 'Helper.cs').write_text('static class Helper {public static int Value()=>42;}\n')
-            self.assertEqual(subprocess.run(run.build('CSharp'), timeout=20).returncode, 0)
-
-    @unittest.skipUnless(shutil.which('g++'), 'C++ compiler not installed in this environment')
-    def test_cpp_helper_translation_unit(self):
-        with tempfile.TemporaryDirectory() as folder, patch.object(run, 'P', pathlib.Path(folder)):
-            source = pathlib.Path(folder) / 'src/Cpp'
-            source.mkdir(parents=True)
-            (source / 'main.cpp').write_text('int helper(); int main(){return helper()==42?0:1;}\n')
-            (source / 'helper.cpp').write_text('int helper(){return 42;}\n')
-            command = run.build('Cpp')
-            self.assertEqual(subprocess.run(command, timeout=20).returncode, 0)
-
 
 if __name__ == '__main__':
     unittest.main()

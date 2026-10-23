@@ -1,2 +1,0 @@
-PASS setup: ping
-Language: Java

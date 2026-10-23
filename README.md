@@ -1,20 +1,11 @@
 # Assignment 3: Graph Algorithms
 
-Java 17 solution for Design and Analysis of Algorithms.
+Java 17 implementations of DSU, Kruskal, Prim, Kosaraju SCC, DFS topological
+ordering and DAG shortest paths, with route reconstruction.
 
-The program supports `dsu`, `kruskal`, `prim`, `scc`, `topo` and `dag`.
-It reads UTF-8 JSON Lines from standard input and writes one JSON object per request.
-The algorithms use only standard Java classes. No downloaded libraries are needed.
+## Run and test
 
-## Requirements
-
-- JDK 17 or newer, with `java` and `javac` on PATH.
-- Python 3.12 or newer for the supplied launcher and test scripts.
-- `submission.json` selects `Java`.
-
-## Build, run and test
-
-Run commands from the repository root:
+Requires JDK 17+ and Python 3.12+. Run from the repository root:
 
 ```sh
 python3 tools/run.py --setup
@@ -24,17 +15,9 @@ python3 tests/check.py --all
 python3 tests/benchmark.py
 ```
 
-On systems where Python is named `python`, use `python` instead of `python3`.
-On Windows, `py -3` is another option.
+Use `python` or `py -3` if needed on your system. No external packages are required.
 
-Build and run without the Python launcher:
-
-```sh
-mkdir -p .build/Java
-javac --release 17 -encoding UTF-8 -d .build/Java src/Java/*.java
-java -Xmx384m -cp .build/Java Main < tests/my_cases.jsonl
-```
-
-`--setup` checks ping only. `--check` checks the 36 public cases and request-state reset.
-The own checks also exercise alternative answers, route reconstruction, independent
-small-graph oracles and full limits. See [tests/README.md](tests/README.md) for details.
+The program reads one UTF-8 JSON request per line and writes one JSON result per line.
+The implementation is in [src/Java/Algorithms.java](src/Java/Algorithms.java).
+[ANALYSIS.md](ANALYSIS.md) explains the algorithms, correctness, complexity and benchmark.
+[tests/README.md](tests/README.md) describes the tests and stored results.
