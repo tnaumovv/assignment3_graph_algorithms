@@ -1,0 +1,1033 @@
+[
+  {
+    "name": "ping",
+    "input": {
+      "task": "ping"
+    },
+    "output": {
+      "status": "ready"
+    },
+    "reason": "The supplied transport must remain available between algorithm requests."
+  },
+  {
+    "name": "dsu-empty",
+    "input": {
+      "task": "dsu",
+      "n": 0,
+      "operations": []
+    },
+    "output": {
+      "states": []
+    },
+    "reason": "No vertices or operations means no states."
+  },
+  {
+    "name": "dsu-repeated-and-self",
+    "input": {
+      "task": "dsu",
+      "n": 5,
+      "operations": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    "output": {
+      "states": [
+        [
+          5,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          4
+        ]
+      ]
+    },
+    "reason": "Only three unions join different sets; vertex 4 remains isolated."
+  },
+  {
+    "name": "dsu-single",
+    "input": {
+      "task": "dsu",
+      "n": 1,
+      "operations": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    "output": {
+      "states": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "reason": "Self unions preserve the one singleton."
+  },
+  {
+    "name": "dsu-reset",
+    "input": {
+      "task": "dsu",
+      "n": 2,
+      "operations": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    "output": {
+      "states": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    "reason": "A fresh request starts from two singleton components."
+  },
+  {
+    "name": "kruskal-empty",
+    "input": {
+      "task": "kruskal",
+      "n": 0,
+      "edges": []
+    },
+    "output": {
+      "cost": 0,
+      "components": 0,
+      "edge_ids": []
+    },
+    "reason": "An empty graph has zero cost and components."
+  },
+  {
+    "name": "kruskal-isolates",
+    "input": {
+      "task": "kruskal",
+      "n": 4,
+      "edges": []
+    },
+    "output": {
+      "cost": 0,
+      "components": 4,
+      "edge_ids": []
+    },
+    "reason": "All four vertices are singleton components."
+  },
+  {
+    "name": "kruskal-negative-parallel-disconnected",
+    "input": {
+      "task": "kruskal",
+      "n": 6,
+      "edges": [
+        [
+          0,
+          0,
+          -100
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          1,
+          -2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          3,
+          4,
+          -5
+        ],
+        [
+          3,
+          4,
+          -5
+        ],
+        [
+          4,
+          4,
+          -99
+        ]
+      ]
+    },
+    "output": {
+      "cost": -4,
+      "components": 3,
+      "edge_ids": [
+        2,
+        3,
+        5
+      ]
+    },
+    "reason": "Choose -2 and one 3 edge in {0,1,2}, one -5 edge in {3,4}; vertex 5 is isolated. Loops are excluded."
+  },
+  {
+    "name": "kruskal-ties",
+    "input": {
+      "task": "kruskal",
+      "n": 3,
+      "edges": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          1
+        ]
+      ]
+    },
+    "output": {
+      "cost": 2,
+      "components": 1,
+      "edge_ids": [
+        0,
+        1
+      ]
+    },
+    "reason": "Any two triangle edges connect all vertices with cost 2."
+  },
+  {
+    "name": "kruskal-positive-long",
+    "input": {
+      "task": "kruskal",
+      "n": 4,
+      "edges": [
+        [
+          0,
+          1,
+          1000000000
+        ],
+        [
+          1,
+          2,
+          1000000000
+        ],
+        [
+          2,
+          3,
+          1000000000
+        ]
+      ]
+    },
+    "output": {
+      "cost": 3000000000,
+      "components": 1,
+      "edge_ids": [
+        0,
+        1,
+        2
+      ]
+    },
+    "reason": "The graph is a tree, so all three edges are necessary."
+  },
+  {
+    "name": "kruskal-negative-long",
+    "input": {
+      "task": "kruskal",
+      "n": 4,
+      "edges": [
+        [
+          0,
+          1,
+          -1000000000
+        ],
+        [
+          1,
+          2,
+          -1000000000
+        ],
+        [
+          2,
+          3,
+          -1000000000
+        ]
+      ]
+    },
+    "output": {
+      "cost": -3000000000,
+      "components": 1,
+      "edge_ids": [
+        0,
+        1,
+        2
+      ]
+    },
+    "reason": "The unique tree has total -3000000000, outside signed 32-bit range."
+  },
+  {
+    "name": "prim-empty",
+    "input": {
+      "task": "prim",
+      "n": 0,
+      "edges": []
+    },
+    "output": {
+      "cost": 0,
+      "components": 0,
+      "edge_ids": []
+    },
+    "reason": "An empty graph has zero cost and components."
+  },
+  {
+    "name": "prim-isolates",
+    "input": {
+      "task": "prim",
+      "n": 4,
+      "edges": []
+    },
+    "output": {
+      "cost": 0,
+      "components": 4,
+      "edge_ids": []
+    },
+    "reason": "All four vertices are singleton components."
+  },
+  {
+    "name": "prim-negative-parallel-disconnected",
+    "input": {
+      "task": "prim",
+      "n": 6,
+      "edges": [
+        [
+          0,
+          0,
+          -100
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          1,
+          -2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          3,
+          4,
+          -5
+        ],
+        [
+          3,
+          4,
+          -5
+        ],
+        [
+          4,
+          4,
+          -99
+        ]
+      ]
+    },
+    "output": {
+      "cost": -4,
+      "components": 3,
+      "edge_ids": [
+        2,
+        3,
+        5
+      ]
+    },
+    "reason": "Choose -2 and one 3 edge in {0,1,2}, one -5 edge in {3,4}; vertex 5 is isolated. Loops are excluded."
+  },
+  {
+    "name": "prim-ties",
+    "input": {
+      "task": "prim",
+      "n": 3,
+      "edges": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          1
+        ]
+      ]
+    },
+    "output": {
+      "cost": 2,
+      "components": 1,
+      "edge_ids": [
+        0,
+        1
+      ]
+    },
+    "reason": "Any two triangle edges connect all vertices with cost 2."
+  },
+  {
+    "name": "prim-positive-long",
+    "input": {
+      "task": "prim",
+      "n": 4,
+      "edges": [
+        [
+          0,
+          1,
+          1000000000
+        ],
+        [
+          1,
+          2,
+          1000000000
+        ],
+        [
+          2,
+          3,
+          1000000000
+        ]
+      ]
+    },
+    "output": {
+      "cost": 3000000000,
+      "components": 1,
+      "edge_ids": [
+        0,
+        1,
+        2
+      ]
+    },
+    "reason": "The graph is a tree, so all three edges are necessary."
+  },
+  {
+    "name": "prim-negative-long",
+    "input": {
+      "task": "prim",
+      "n": 4,
+      "edges": [
+        [
+          0,
+          1,
+          -1000000000
+        ],
+        [
+          1,
+          2,
+          -1000000000
+        ],
+        [
+          2,
+          3,
+          -1000000000
+        ]
+      ]
+    },
+    "output": {
+      "cost": -3000000000,
+      "components": 1,
+      "edge_ids": [
+        0,
+        1,
+        2
+      ]
+    },
+    "reason": "The unique tree has total -3000000000, outside signed 32-bit range."
+  },
+  {
+    "name": "scc-empty",
+    "input": {
+      "task": "scc",
+      "n": 0,
+      "edges": []
+    },
+    "output": {
+      "component": [],
+      "condensation": []
+    },
+    "reason": "No vertices means no SCCs or condensation edges."
+  },
+  {
+    "name": "scc-isolates",
+    "input": {
+      "task": "scc",
+      "n": 3,
+      "edges": []
+    },
+    "output": {
+      "component": [
+        0,
+        1,
+        2
+      ],
+      "condensation": []
+    },
+    "reason": "Each isolated vertex is its own SCC."
+  },
+  {
+    "name": "scc-dedup",
+    "input": {
+      "task": "scc",
+      "n": 6,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    "output": {
+      "component": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        3
+      ],
+      "condensation": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    "reason": "Mutually reachable groups are {0,1}, {2,3}, {4}, {5}; parallel cross edges become one pair."
+  },
+  {
+    "name": "scc-one",
+    "input": {
+      "task": "scc",
+      "n": 4,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    "output": {
+      "component": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "condensation": []
+    },
+    "reason": "The directed cycle makes all vertices mutually reachable."
+  },
+  {
+    "name": "topo-empty",
+    "input": {
+      "task": "topo",
+      "n": 0,
+      "edges": []
+    },
+    "output": {
+      "acyclic": true,
+      "order": []
+    },
+    "reason": "The empty graph has no cycle."
+  },
+  {
+    "name": "topo-finished-neighbour",
+    "input": {
+      "task": "topo",
+      "n": 4,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    "output": {
+      "acyclic": true,
+      "order": [
+        0,
+        2,
+        1,
+        3
+      ]
+    },
+    "reason": "An edge into a finished vertex is not a cycle; all dependencies go forward in this order."
+  },
+  {
+    "name": "topo-isolates",
+    "input": {
+      "task": "topo",
+      "n": 4,
+      "edges": []
+    },
+    "output": {
+      "acyclic": true,
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "reason": "Any permutation of isolated vertices is valid."
+  },
+  {
+    "name": "topo-hidden-cycle",
+    "input": {
+      "task": "topo",
+      "n": 5,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          2
+        ]
+      ]
+    },
+    "output": {
+      "acyclic": false,
+      "order": []
+    },
+    "reason": "The separate component {2,3,4} contains a directed cycle."
+  },
+  {
+    "name": "topo-loop",
+    "input": {
+      "task": "topo",
+      "n": 1,
+      "edges": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    "output": {
+      "acyclic": false,
+      "order": []
+    },
+    "reason": "A self-loop is a directed cycle."
+  },
+  {
+    "name": "dag-single",
+    "input": {
+      "task": "dag",
+      "n": 1,
+      "source": 0,
+      "edges": []
+    },
+    "output": {
+      "acyclic": true,
+      "distance": [
+        0
+      ],
+      "parent_edge": [
+        -1
+      ]
+    },
+    "reason": "The source has distance zero and no parent."
+  },
+  {
+    "name": "dag-routes",
+    "input": {
+      "task": "dag",
+      "n": 6,
+      "source": 0,
+      "edges": [
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          2,
+          8
+        ],
+        [
+          1,
+          2,
+          -7
+        ],
+        [
+          2,
+          3,
+          4
+        ],
+        [
+          1,
+          3,
+          10
+        ],
+        [
+          4,
+          5,
+          -9
+        ]
+      ]
+    },
+    "output": {
+      "acyclic": true,
+      "distance": [
+        0,
+        3,
+        -4,
+        0,
+        null,
+        null
+      ],
+      "parent_edge": [
+        -1,
+        0,
+        2,
+        3,
+        -1,
+        -1
+      ]
+    },
+    "reason": "Paths 0-1, 0-1-2, 0-1-2-3 cost 3,-4,0; 4 and 5 are unreachable."
+  },
+  {
+    "name": "dag-ties-parallel",
+    "input": {
+      "task": "dag",
+      "n": 5,
+      "source": 0,
+      "edges": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          3,
+          -3
+        ],
+        [
+          2,
+          3,
+          -2
+        ]
+      ]
+    },
+    "output": {
+      "acyclic": true,
+      "distance": [
+        0,
+        2,
+        1,
+        -1,
+        null
+      ],
+      "parent_edge": [
+        -1,
+        0,
+        2,
+        3,
+        -1
+      ]
+    },
+    "reason": "Both routes to 3 cost -1; either parallel edge into 1 is valid. Vertex 4 is unreachable."
+  },
+  {
+    "name": "dag-unreachable-cycle",
+    "input": {
+      "task": "dag",
+      "n": 5,
+      "source": 0,
+      "edges": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          2,
+          3,
+          1
+        ],
+        [
+          3,
+          2,
+          -1
+        ]
+      ]
+    },
+    "output": {
+      "acyclic": false,
+      "distance": [],
+      "parent_edge": []
+    },
+    "reason": "Cycle 2-3-2 invalidates the whole graph although source 0 cannot reach it."
+  },
+  {
+    "name": "dag-self-loop",
+    "input": {
+      "task": "dag",
+      "n": 2,
+      "source": 1,
+      "edges": [
+        [
+          0,
+          0,
+          -1
+        ]
+      ]
+    },
+    "output": {
+      "acyclic": false,
+      "distance": [],
+      "parent_edge": []
+    },
+    "reason": "The unreachable self-loop also invalidates the graph."
+  },
+  {
+    "name": "dag-positive-long",
+    "input": {
+      "task": "dag",
+      "n": 4,
+      "source": 0,
+      "edges": [
+        [
+          0,
+          1,
+          1000000000
+        ],
+        [
+          1,
+          2,
+          1000000000
+        ],
+        [
+          2,
+          3,
+          1000000000
+        ]
+      ]
+    },
+    "output": {
+      "acyclic": true,
+      "distance": [
+        0,
+        1000000000,
+        2000000000,
+        3000000000
+      ],
+      "parent_edge": [
+        -1,
+        0,
+        1,
+        2
+      ]
+    },
+    "reason": "The only source paths use successive chain edges; distance to 3 is 3000000000."
+  },
+  {
+    "name": "dag-negative-long",
+    "input": {
+      "task": "dag",
+      "n": 4,
+      "source": 3,
+      "edges": [
+        [
+          3,
+          2,
+          -1000000000
+        ],
+        [
+          2,
+          1,
+          -1000000000
+        ],
+        [
+          1,
+          0,
+          -1000000000
+        ]
+      ]
+    },
+    "output": {
+      "acyclic": true,
+      "distance": [
+        -3000000000,
+        -2000000000,
+        -1000000000,
+        0
+      ],
+      "parent_edge": [
+        2,
+        1,
+        0,
+        -1
+      ]
+    },
+    "reason": "The source is vertex 3; all three negative chain edges form the unique path to 0."
+  }
+]

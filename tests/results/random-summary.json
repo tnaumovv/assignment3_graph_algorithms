@@ -1,0 +1,14 @@
+{
+  "seed": 20261023,
+  "generated_graphs": 80,
+  "requests": 470,
+  "mixed_requests": 940,
+  "passed": true,
+  "oracles": [
+    "flood fill",
+    "exhaustive forest subsets",
+    "mutual reachability",
+    "Kahn",
+    "Bellman-Ford"
+  ]
+}

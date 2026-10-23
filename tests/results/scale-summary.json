@@ -1,0 +1,97 @@
+{
+  "environment": "macOS-15.7.1-arm64-arm-64bit-Mach-O",
+  "heap": "-Xmx384m",
+  "timeout_per_request_seconds": 20,
+  "cases": [
+    {
+      "name": "dsu-full-limit",
+      "n": 100000,
+      "edges_or_operations": 250000,
+      "expected_reason": "The first n-1 operations make a chain; remaining unions change nothing.",
+      "passed": true,
+      "request_sha256": "866261bc710971cab94a963516e933d3e8b3ae732710cf69a8c171cd5dd17f03",
+      "answer_sha256": "6c1041104068e3ffe5eb2eb17d963fa0c2b0dba57c96868a1502e73d3f1fe264",
+      "process_seconds_including_transport": 0.582169
+    },
+    {
+      "name": "kruskal-full-limit",
+      "n": 100000,
+      "edges_or_operations": 250000,
+      "expected_reason": "Every usable edge weighs 1e9; any spanning tree needs n-1 edges. Negative loops are forbidden.",
+      "passed": true,
+      "request_sha256": "a966bef0fcc4baef45c45eee0c14ed1ba890f4a3a4e1c668e0d848b9fd10af72",
+      "answer_sha256": "2ce431aaeff0003451a1a1256412f3ae54eed3e3a5c91b8b94274d1932ee4804",
+      "process_seconds_including_transport": 0.545305
+    },
+    {
+      "name": "prim-full-limit",
+      "n": 100000,
+      "edges_or_operations": 250000,
+      "expected_reason": "Every usable edge weighs 1e9; any spanning tree needs n-1 edges. Negative loops are forbidden.",
+      "passed": true,
+      "request_sha256": "e0c51b58f49b25384f7f416306b5206d67d130dd7106c94230b9184e81018393",
+      "answer_sha256": "2ce431aaeff0003451a1a1256412f3ae54eed3e3a5c91b8b94274d1932ee4804",
+      "process_seconds_including_transport": 0.632679
+    },
+    {
+      "name": "scc-deep-dag",
+      "n": 100000,
+      "edges_or_operations": 250000,
+      "expected_reason": "All edges go forward, so every vertex is a separate SCC; condensation follows input cross pairs.",
+      "passed": true,
+      "request_sha256": "792b535514331c423eee7bbb59e54ee69f916a97da62cbbfefaa7c91078a397f",
+      "answer_sha256": "d8cc507928a7210230f1efd608cb264ff47b038ff3f04a15724ce46edc0c2952",
+      "process_seconds_including_transport": 0.816209
+    },
+    {
+      "name": "topo-deep-dag",
+      "n": 100000,
+      "edges_or_operations": 250000,
+      "expected_reason": "The chain forces the unique order 0 through n-1; extra edges go forward.",
+      "passed": true,
+      "request_sha256": "ac0ebd84a68343365f2d4b9ca4a41621071292b952ad5fbd35671b3b16173cb9",
+      "answer_sha256": "d8f6d80e5cab5528eb175785d5e4491128231b044c75936f321057cce0668a72",
+      "process_seconds_including_transport": 0.429782
+    },
+    {
+      "name": "topo-deep-cycle",
+      "n": 100000,
+      "edges_or_operations": 250000,
+      "expected_reason": "The final edge closes the 100000-vertex chain into a cycle.",
+      "passed": true,
+      "request_sha256": "4acf97fab816e3a4366c3a4a16d7666ad74e26ce1bce03f9b244eacfed598812",
+      "answer_sha256": "8d87b33da1794208938b1d93bba219df91f647a293079f664e2b05f831cb4413",
+      "process_seconds_including_transport": 0.341113
+    },
+    {
+      "name": "scc-deep-cycle",
+      "n": 100000,
+      "edges_or_operations": 250000,
+      "expected_reason": "The directed ring makes every vertex reachable from every other; duplicates add no SCCs.",
+      "passed": true,
+      "request_sha256": "3f7a8fd0e2d623e8e89a5d44db44feb19ee58456e7abf897635a1f7068674831",
+      "answer_sha256": "412b0d2c494cc5ab01318cc86f22bff1de1d017a68ae51c65e4b12b9dfcbbcaa",
+      "process_seconds_including_transport": 0.513426
+    },
+    {
+      "name": "dag-deep-negative",
+      "n": 100000,
+      "edges_or_operations": 250000,
+      "expected_reason": "The full negative chain is shorter than every zero-cost shortcut; distance[i] = -i*1e9.",
+      "passed": true,
+      "request_sha256": "0180313462f946589497023de49f5e4d400cca2b856eb6ca7198546f0faa22a1",
+      "answer_sha256": "d3181192476ca70da776e981b58576e1929315de34aa75e63e72a433a942fd16",
+      "process_seconds_including_transport": 0.544343
+    },
+    {
+      "name": "dag-full-unreachable-cycle",
+      "n": 100000,
+      "edges_or_operations": 250000,
+      "expected_reason": "The source is isolated, but the other 99999 vertices contain a cycle.",
+      "passed": true,
+      "request_sha256": "388c9b44268aebe2286df5b9df65d71107b22ebb0fb19a80a2f1e4b904e8980c",
+      "answer_sha256": "24e25a6dba199dbc2a63f22ae27c18c221b75353efe6091adbbb6b1a77eeb5d0",
+      "process_seconds_including_transport": 0.370708
+    }
+  ]
+}

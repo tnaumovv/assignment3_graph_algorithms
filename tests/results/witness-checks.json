@@ -1,0 +1,1051 @@
+[
+  {
+    "name": "kruskal-alternative-tree",
+    "request": {
+      "task": "kruskal",
+      "n": 3,
+      "edges": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          1
+        ]
+      ]
+    },
+    "expected": {
+      "cost": 2,
+      "components": 1,
+      "edge_ids": [
+        0,
+        1
+      ]
+    },
+    "candidate": {
+      "cost": 2,
+      "components": 1,
+      "edge_ids": [
+        0,
+        2
+      ]
+    },
+    "should_accept": true,
+    "accepted": true
+  },
+  {
+    "name": "kruskal-duplicate-edge",
+    "request": {
+      "task": "kruskal",
+      "n": 3,
+      "edges": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          1
+        ]
+      ]
+    },
+    "expected": {
+      "cost": 2,
+      "components": 1,
+      "edge_ids": [
+        0,
+        1
+      ]
+    },
+    "candidate": {
+      "cost": 2,
+      "components": 1,
+      "edge_ids": [
+        0,
+        0
+      ]
+    },
+    "should_accept": false,
+    "accepted": false
+  },
+  {
+    "name": "kruskal-missing-edge",
+    "request": {
+      "task": "kruskal",
+      "n": 3,
+      "edges": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          1
+        ]
+      ]
+    },
+    "expected": {
+      "cost": 2,
+      "components": 1,
+      "edge_ids": [
+        0,
+        1
+      ]
+    },
+    "candidate": {
+      "cost": 2,
+      "components": 1,
+      "edge_ids": [
+        0
+      ]
+    },
+    "should_accept": false,
+    "accepted": false
+  },
+  {
+    "name": "kruskal-selected-loop",
+    "request": {
+      "task": "kruskal",
+      "n": 6,
+      "edges": [
+        [
+          0,
+          0,
+          -100
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          1,
+          -2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          3,
+          4,
+          -5
+        ],
+        [
+          3,
+          4,
+          -5
+        ],
+        [
+          4,
+          4,
+          -99
+        ]
+      ]
+    },
+    "expected": {
+      "cost": -4,
+      "components": 3,
+      "edge_ids": [
+        2,
+        3,
+        5
+      ]
+    },
+    "candidate": {
+      "cost": -4,
+      "components": 3,
+      "edge_ids": [
+        0,
+        2,
+        5
+      ]
+    },
+    "should_accept": false,
+    "accepted": false
+  },
+  {
+    "name": "prim-alternative-tree",
+    "request": {
+      "task": "prim",
+      "n": 3,
+      "edges": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          1
+        ]
+      ]
+    },
+    "expected": {
+      "cost": 2,
+      "components": 1,
+      "edge_ids": [
+        0,
+        1
+      ]
+    },
+    "candidate": {
+      "cost": 2,
+      "components": 1,
+      "edge_ids": [
+        0,
+        2
+      ]
+    },
+    "should_accept": true,
+    "accepted": true
+  },
+  {
+    "name": "prim-duplicate-edge",
+    "request": {
+      "task": "prim",
+      "n": 3,
+      "edges": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          1
+        ]
+      ]
+    },
+    "expected": {
+      "cost": 2,
+      "components": 1,
+      "edge_ids": [
+        0,
+        1
+      ]
+    },
+    "candidate": {
+      "cost": 2,
+      "components": 1,
+      "edge_ids": [
+        0,
+        0
+      ]
+    },
+    "should_accept": false,
+    "accepted": false
+  },
+  {
+    "name": "prim-missing-edge",
+    "request": {
+      "task": "prim",
+      "n": 3,
+      "edges": [
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          0,
+          2,
+          1
+        ]
+      ]
+    },
+    "expected": {
+      "cost": 2,
+      "components": 1,
+      "edge_ids": [
+        0,
+        1
+      ]
+    },
+    "candidate": {
+      "cost": 2,
+      "components": 1,
+      "edge_ids": [
+        0
+      ]
+    },
+    "should_accept": false,
+    "accepted": false
+  },
+  {
+    "name": "prim-selected-loop",
+    "request": {
+      "task": "prim",
+      "n": 6,
+      "edges": [
+        [
+          0,
+          0,
+          -100
+        ],
+        [
+          0,
+          1,
+          4
+        ],
+        [
+          0,
+          1,
+          -2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          2,
+          3
+        ],
+        [
+          3,
+          4,
+          -5
+        ],
+        [
+          3,
+          4,
+          -5
+        ],
+        [
+          4,
+          4,
+          -99
+        ]
+      ]
+    },
+    "expected": {
+      "cost": -4,
+      "components": 3,
+      "edge_ids": [
+        2,
+        3,
+        5
+      ]
+    },
+    "candidate": {
+      "cost": -4,
+      "components": 3,
+      "edge_ids": [
+        0,
+        2,
+        5
+      ]
+    },
+    "should_accept": false,
+    "accepted": false
+  },
+  {
+    "name": "scc-alternative-labels",
+    "request": {
+      "task": "scc",
+      "n": 6,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    "expected": {
+      "component": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        3
+      ],
+      "condensation": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    "candidate": {
+      "component": [
+        7,
+        7,
+        12,
+        12,
+        20,
+        99
+      ],
+      "condensation": [
+        [
+          7,
+          12
+        ],
+        [
+          12,
+          20
+        ]
+      ]
+    },
+    "should_accept": true,
+    "accepted": true
+  },
+  {
+    "name": "scc-duplicate-condensation",
+    "request": {
+      "task": "scc",
+      "n": 6,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    "expected": {
+      "component": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        3
+      ],
+      "condensation": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    "candidate": {
+      "component": [
+        7,
+        7,
+        12,
+        12,
+        20,
+        99
+      ],
+      "condensation": [
+        [
+          7,
+          12
+        ],
+        [
+          12,
+          20
+        ],
+        [
+          7,
+          12
+        ]
+      ]
+    },
+    "should_accept": false,
+    "accepted": false
+  },
+  {
+    "name": "scc-missing-condensation",
+    "request": {
+      "task": "scc",
+      "n": 6,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    "expected": {
+      "component": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        3
+      ],
+      "condensation": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    "candidate": {
+      "component": [
+        7,
+        7,
+        12,
+        12,
+        20,
+        99
+      ],
+      "condensation": []
+    },
+    "should_accept": false,
+    "accepted": false
+  },
+  {
+    "name": "scc-merged-isolate",
+    "request": {
+      "task": "scc",
+      "n": 6,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    "expected": {
+      "component": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        3
+      ],
+      "condensation": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    "candidate": {
+      "component": [
+        7,
+        7,
+        12,
+        12,
+        20,
+        20
+      ],
+      "condensation": [
+        [
+          7,
+          12
+        ],
+        [
+          12,
+          20
+        ]
+      ]
+    },
+    "should_accept": false,
+    "accepted": false
+  },
+  {
+    "name": "topo-alternative-order",
+    "request": {
+      "task": "topo",
+      "n": 4,
+      "edges": []
+    },
+    "expected": {
+      "acyclic": true,
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "candidate": {
+      "acyclic": true,
+      "order": [
+        3,
+        2,
+        1,
+        0
+      ]
+    },
+    "should_accept": true,
+    "accepted": true
+  },
+  {
+    "name": "topo-duplicate-vertex",
+    "request": {
+      "task": "topo",
+      "n": 4,
+      "edges": []
+    },
+    "expected": {
+      "acyclic": true,
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "candidate": {
+      "acyclic": true,
+      "order": [
+        0,
+        1,
+        2,
+        2
+      ]
+    },
+    "should_accept": false,
+    "accepted": false
+  },
+  {
+    "name": "topo-backward-dependency",
+    "request": {
+      "task": "topo",
+      "n": 4,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    "expected": {
+      "acyclic": true,
+      "order": [
+        0,
+        2,
+        1,
+        3
+      ]
+    },
+    "candidate": {
+      "acyclic": true,
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "should_accept": false,
+    "accepted": false
+  },
+  {
+    "name": "dag-alternative-parents",
+    "request": {
+      "task": "dag",
+      "n": 5,
+      "source": 0,
+      "edges": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          3,
+          -3
+        ],
+        [
+          2,
+          3,
+          -2
+        ]
+      ]
+    },
+    "expected": {
+      "acyclic": true,
+      "distance": [
+        0,
+        2,
+        1,
+        -1,
+        null
+      ],
+      "parent_edge": [
+        -1,
+        0,
+        2,
+        3,
+        -1
+      ]
+    },
+    "candidate": {
+      "acyclic": true,
+      "distance": [
+        0,
+        2,
+        1,
+        -1,
+        null
+      ],
+      "parent_edge": [
+        -1,
+        1,
+        2,
+        4,
+        -1
+      ]
+    },
+    "should_accept": true,
+    "accepted": true
+  },
+  {
+    "name": "dag-edge-ending-at-wrong-vertex",
+    "request": {
+      "task": "dag",
+      "n": 5,
+      "source": 0,
+      "edges": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          3,
+          -3
+        ],
+        [
+          2,
+          3,
+          -2
+        ]
+      ]
+    },
+    "expected": {
+      "acyclic": true,
+      "distance": [
+        0,
+        2,
+        1,
+        -1,
+        null
+      ],
+      "parent_edge": [
+        -1,
+        0,
+        2,
+        3,
+        -1
+      ]
+    },
+    "candidate": {
+      "acyclic": true,
+      "distance": [
+        0,
+        2,
+        1,
+        -1,
+        null
+      ],
+      "parent_edge": [
+        -1,
+        0,
+        2,
+        0,
+        -1
+      ]
+    },
+    "should_accept": false,
+    "accepted": false
+  },
+  {
+    "name": "dag-parent-on-unreachable-vertex",
+    "request": {
+      "task": "dag",
+      "n": 5,
+      "source": 0,
+      "edges": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          1,
+          3,
+          -3
+        ],
+        [
+          2,
+          3,
+          -2
+        ]
+      ]
+    },
+    "expected": {
+      "acyclic": true,
+      "distance": [
+        0,
+        2,
+        1,
+        -1,
+        null
+      ],
+      "parent_edge": [
+        -1,
+        0,
+        2,
+        3,
+        -1
+      ]
+    },
+    "candidate": {
+      "acyclic": true,
+      "distance": [
+        0,
+        2,
+        1,
+        -1,
+        null
+      ],
+      "parent_edge": [
+        -1,
+        0,
+        2,
+        3,
+        4
+      ]
+    },
+    "should_accept": false,
+    "accepted": false
+  }
+]

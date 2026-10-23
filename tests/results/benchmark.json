@@ -1,0 +1,96 @@
+{
+  "runtime": "openjdk version \"17.0.21\" 2026-10-20\nOpenJDK Runtime Environment Temurin-17.0.21+9 (build 17.0.21+9)\nOpenJDK 64-Bit Server VM Temurin-17.0.21+9 (build 17.0.21+9, mixed mode, sharing)",
+  "os": "macOS-15.7.1-arm64-arm-64bit-Mach-O",
+  "hardware": "Apple M2",
+  "python": "3.13.1",
+  "command": "python3 tests/benchmark.py",
+  "jvm_options": "-Xmx384m",
+  "timer": "System.nanoTime; elapsed nanoseconds divided by 1000000",
+  "warmup": "5 untimed calls per method per graph, after one verified initial call",
+  "timing_boundary": "Each complete Algorithms method, including Input.edges copying, algorithm-specific graph construction, sorting/heap work and result creation. Excludes compilation, JVM launch, input generation, hashing, JSON parsing/printing and forest verification. Automatic garbage collection can occur inside a sample.",
+  "ordering": "The method run first alternates between measurement rounds.",
+  "generator": "java.util.Random(20261023 + n); negative weighted chain plus nonnegative extra edges, then Collections.shuffle with the same Random; see tests/Benchmark.java.",
+  "rows": [
+    {
+      "n": 1000,
+      "m": 4000,
+      "seed": 20262023,
+      "graph_sha256": "81b6ee38cc0f176fd6f15bebae3599ba83c7a9369e52d3155ebfa4c2a35f9557",
+      "expected_cost": -495174406,
+      "warmup_per_method": 5,
+      "measurements_per_method": 5,
+      "verified_outputs_per_method": 11,
+      "kruskal_ms": [
+        2.46275,
+        3.847959,
+        2.218458,
+        1.780041,
+        1.775542
+      ],
+      "prim_ms": [
+        2.007708,
+        1.790917,
+        1.751292,
+        1.573125,
+        1.565209
+      ],
+      "kruskal_median_ms": 2.218458,
+      "prim_median_ms": 1.751292,
+      "all_forests_verified": true
+    },
+    {
+      "n": 10000,
+      "m": 40000,
+      "seed": 20271023,
+      "graph_sha256": "a273b41321600e2d93cf86cf9df48cf3c89d7aeb46f5eb3d67ac437f5d568b33",
+      "expected_cost": -5031520572,
+      "warmup_per_method": 5,
+      "measurements_per_method": 5,
+      "verified_outputs_per_method": 11,
+      "kruskal_ms": [
+        18.681208,
+        15.590208,
+        15.664208,
+        15.504791,
+        15.586834
+      ],
+      "prim_ms": [
+        16.37475,
+        18.431083,
+        18.022041,
+        17.85625,
+        18.798709
+      ],
+      "kruskal_median_ms": 15.590208,
+      "prim_median_ms": 18.022041,
+      "all_forests_verified": true
+    },
+    {
+      "n": 100000,
+      "m": 250000,
+      "seed": 20361023,
+      "graph_sha256": "254f653a179eb79810126e396dd78cea8c183c000ab91ac38f551555562d5596",
+      "expected_cost": -50127046303,
+      "warmup_per_method": 5,
+      "measurements_per_method": 5,
+      "verified_outputs_per_method": 11,
+      "kruskal_ms": [
+        115.003583,
+        120.756542,
+        134.151667,
+        126.016458,
+        139.824708
+      ],
+      "prim_ms": [
+        146.388459,
+        155.392792,
+        163.96675,
+        143.400791,
+        147.775
+      ],
+      "kruskal_median_ms": 126.016458,
+      "prim_median_ms": 147.775,
+      "all_forests_verified": true
+    }
+  ]
+}
