@@ -38,26 +38,3 @@ java -Xmx384m -cp .build/Java Main < tests/my_cases.jsonl
 `--setup` checks ping only. `--check` checks the 36 public cases and request-state reset.
 The own checks also exercise alternative answers, route reconstruction, independent
 small-graph oracles and full limits. See [tests/README.md](tests/README.md) for details.
-
-## Files
-
-- [src/Java/Algorithms.java](src/Java/Algorithms.java): six algorithms and `reconstructRoute`.
-- [ANALYSIS.md](ANALYSIS.md): steps, correctness, complexity, tests and benchmark measurements.
-- [tests/cases.json](tests/cases.json): 33 cases with justified expected answers.
-- [tests/results/](tests/results/): actual outputs, execution logs and measurements.
-- [docs/SPECIFICATION_EN.md](docs/SPECIFICATION_EN.md): task contracts and assessment reference.
-
-The supplied Java entry point, JSON parser, input helpers and public checking tools
-are kept unchanged. The other language folders are unselected template stubs.
-The GitHub workflow uses Java 17 on Ubuntu and runs both public and own checks.
-
-## Submission
-
-Submit the exact commit URL in Moodle Online text and click **Submit assignment**.
-Public checks report pass/fail; Moodle grades and the separate quiz are handled by the course.
-The deadline is the one announced in Moodle.
-
-## Source
-
-The starter structure, adapters, public cases and checking tools come from the
-[official assignment template](https://github.com/RZhaniya/daa-assignment-3-graphs/tree/76c1d91daa90ceadcb225f5408d54d4bfcf397f9).
